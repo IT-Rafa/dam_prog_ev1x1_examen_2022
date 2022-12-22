@@ -1,7 +1,6 @@
 package es.itrafa.ej1
 
 /**
- * /**
  * Tres veces el diámetro y un poquito más ¡En kotlin!
  *
  * El 14 de Marzo es el día internacional de PI.
@@ -37,7 +36,7 @@ package es.itrafa.ej1
  * El poquito más es 0,141516….  y no sabes el trabajo que le dio a matemáticos de todos
  * los tiempos  determinar cada vez con más precisión ese poquito más.
  *
- * Aprovechamos entonces las enseñanzas del sabio maestro y estipulamos el  poquito más(pm)
+ * Aprovechamos entonces las enseñanzas del sabio maestro y estipulamos el poquito más(pm)
  * de la siguiente forma:
  *
  * 0.1415<=pm<=0.1417
@@ -47,8 +46,9 @@ package es.itrafa.ej1
  * ENTRADA
  *
  * La entrada comienza con una línea indicando el número de casos que pueden ser 0 o más, a
- * continuación cada caso se específica en una línea con dos números  separados por un espacio en
+ * continuación cada caso se específica en una línea con dos números separados por un espacio en
  * blanco. El primer número representa el perímetro y el segundo el diámetro.
+ *
  * SALIDA
  *
  * La salida indicará para cada caso de entrada si p y d pertenecen a una circunferencia  con  la
@@ -66,11 +66,32 @@ package es.itrafa.ej1
  * Recuerda también que quizá en tu equipo la introducción por teclado de números con decimales en
  * lugar de punto decimal requiera coma decimal.
  *
- *  Para comprobar el ćodigo puedes utilizar IntelliJ. Si hubiera problemas con este IDE y con
+ * Para comprobar el código puedes utilizar IntelliJ. Si hubiera problemas con este IDE y con
  * la autorización del profesor podrías usar el siguiente IDE online
  *
  * https://www.jdoodle.com/compile-kotlin-online/
-*/
+ *
+ * - 0.1415<=pm<=0.1417
+ * - si divides el perímetro de la circunferencia entre su  diámetro siempre
+ * obtendrás la misma cantidad: el número PI
+ *
+ * - Probar coma
+ * nº casos (0 o más)
+ *     Por caso 1 línea: perímetro y diámetro
+ *          Si p / d  == PI
+ *              ES CIRCUNFERENCIA
+ *          SI NO
+ *              PARECE UN HUEVO
  */
 fun main() {
+    val casos = readln().toInt()
+    for(i in 0 until casos){
+        val line = readln()
+        val data =  line.split(" ")
+        val p = data[0].toDouble()
+        val d = data[1].toDouble()
+        val r = p/d
+        if(r )
+
+    }
 }
