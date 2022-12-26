@@ -41,24 +41,26 @@ package es.itrafa.ej5;
  *          hay algun caracter no delimitador entre pos y datos.length(). En caso contrario
  *          devuelve false
  *     nextLine().
- *          Devuelve un String que se corresponde con  la línea leida.  Recuerda la
+ *          Devuelve un String que se corresponde con  la línea leida. Recuerda la
  *          posibilidad de que nextLine() devuelva el string vacío "" cuando se encuentra
  *          inmediatamente un \n.
  *     next().
- *          Devuelve un String que se corresponde con el  token leido. Token es un conjunto
- *          caracteres contiguos delimitador por un caracter delimitador que no se considera
+ *          Devuelve un String que se corresponde con el  token leído. Token es un conjunto
+ *          caracteres contiguos delimitador por un carácter delimitador que no se considera
  *          parte del token.
  *     nextInt().
- *          Devuelve un int que se corresponde con el  token leido. 
+ *          Devuelve un int que se corresponde con el  token leído.
  *
  * Para poder pasar los test, previamente tienes que evitar los errores de compilación.
  * Si no declaras todos los métodos del enunciado, que son métodos usados por los test
  * se provocará un error de compilación sin llegar a comprobarse ni siquiera el primer test.
- * Por lo tanto lo primero que tienes que hacer es escribir un armazón de la clase indicando
+ *
+ * Por lo tanto, lo primero que tienes que hacer es escribir un armazón de la clase indicando
  * los atributos y a continuación al menos los métodos indicados en el enunciado.
+ *
  * Para cada método tienes que declarar como mínimo el tipo de datos que devuelve y una
  * instrucción return devolviendo un valor de dicho tipo. Luego,  a medida  que avances
- * en la pregunta iras  esribiendo el código detallado de cada método. Por ejemplo, no sé
+ * en la pregunta iras  escribiendo el código detallado de cada método. Por ejemplo, no sé
  * resolver el método next() o todavía no empecé a solucionarlo porque estoy con otras
  * partes de la pregunta, pero escribo
  *
@@ -68,11 +70,11 @@ package es.itrafa.ej5;
  *
  * }
  *
- * Ten encuenta, que el funcionamiento de next(), nextInt() y nextLine() es similar al de la
+ * Ten en cuenta, que el funcionamiento de next(), nextInt() y nextLine() es similar al de la
  * clase Scanner que se asume que conoces y entiendes.  Observa en los ejemplos,  que si
  * nextLine()  y next()  en su procesamiento de caracteres, llegan al final del string datos,
- * devuelve los caracteres correspondientes aun que no hubieran llegado  a un delimitador,.
- * Así es además como funcione el Scanner del API java. 
+ * devuelve los caracteres correspondientes aunque no hubieran llegado  a un delimitador,.
+ * Así es además como funcione el Scanner del API java.
  *
  * Por ejemplo:
  * Test 	Resultado
@@ -256,4 +258,184 @@ package es.itrafa.ej5;
  * System.out.println(ms.nextLine());
  */
 public class Ej5 {
+    public static void main(String[] args){
+        MyScanner ms=new MyScanner("hola a todas");
+        System.out.println(ms.getPos());
+        System.out.println(ms.getDatos());
+ *
+         *
+         *
+         * 0
+                * hola a todas
+ *
+         * MyScanner ms=new MyScanner("hola a todas\n y hola a todos");
+ * System.out.println(ms.getPos());
+ * System.out.println(ms.getDatos());
+ *
+         *
+         *
+         * 0
+                * hola a todas
+ *  y hola a todos
+ *
+         * MyScanner ms=new MyScanner("");//String vacio
+ * System.out.println(ms.getPos());
+ * System.out.println(ms.hasNextLine());
+ *
+         *
+         *
+         * 0
+                * false
+                *
+         * MyScanner ms=new MyScanner("hola a todos\ny adios");
+ * ms.nextLine();
+ * System.out.println(ms.getPos());
+ * System.out.println(ms.getDatos());
+ *
+         *
+         *
+         * 13
+                * hola a todos
+ * y adios
+ *
+         * MyScanner ms=new MyScanner("hola a todas\n y hola a todos");
+ * System.out.println(ms.nextLine());
+ * System.out.println(ms.nextLine());
+ * System.out.println(ms.getPos());
+ * System.out.println(ms.hasNextLine());
+ *
+         *
+         *
+         * hola a todas
+                *  y hola a todos
+                * 28
+                * false
+                *
+         * MyScanner ms=new MyScanner("hola a todas\n y hola a todos");
+ * System.out.println(ms.getPos());
+ * System.out.println(ms.hasNextLine());
+ *
+         *
+         *
+         * 0
+                * true
+                *
+         * MyScanner ms=new MyScanner("hola a todas\n y hola a todos");
+ * System.out.println(ms.nextLine());
+ * System.out.println(ms.nextLine());
+ * System.out.println(ms.hasNextLine());
+ *
+         *
+         *
+         * hola a todas
+                *  y hola a todos
+                * false
+                *
+         * MyScanner ms=new MyScanner("hola a todas\n y hola a todos");
+ * System.out.println(ms.nextLine());
+ * System.out.println(ms.getPos());
+ * System.out.println(ms.getDatos());
+ *
+         *
+         *
+         * hola a todas
+                * 13
+                * hola a todas
+ *  y hola a todos
+ *
+         *  MyScanner ms=new MyScanner("hola a todos");
+ *  while(ms.hasNextLine()){
+ *      System.out.println(ms.nextLine());
+ *  }
+ *
+         *
+         *
+         * hola a todos
+                *
+         *  MyScanner ms=new MyScanner("hola a todas \ny también hola a todos");
+ *  while(ms.hasNextLine()){
+ *     System.out.println(ms.nextLine());
+ *  }
+ *
+         *
+         *
+         * hola a todas
+                * y también hola a todos
+ *
+         *  MyScanner ms=new MyScanner("hola a todas \ny también hola a todos\n");
+ *  while(ms.hasNextLine()){
+ *     System.out.println(ms.nextLine());
+ *  }
+ *
+         *
+         *
+         * hola a todas
+                * y también hola a todos
+ *
+         *  MyScanner ms=new MyScanner("hola a todas \n\ny también hola a todos\n");
+ *  while(ms.hasNextLine()){
+ *     System.out.println(ms.nextLine());
+ *  }
+ *
+         *
+         *
+         * hola a todas
+                *
+         * y también hola a todos
+                *
+         * MyScanner ms=new MyScanner("hola a todos");
+ * System.out.println(ms.getPos());
+ * System.out.println(ms.getDatos());
+ *
+         *
+         *
+         * 0
+                * hola a todos
+ *
+         * MyScanner ms=new MyScanner("hola a todos");
+ * System.out.println(ms.getPos());
+ * System.out.println(ms.next());
+ * System.out.println(ms.next());
+ * System.out.println(ms.getPos());
+ *
+         *
+         *
+         * 0
+                * hola
+                * a
+                * 6
+                *
+         * MyScanner ms=new MyScanner("2 3 4");
+ * int suma=0;
+ * while(ms. hasNext()) suma+=ms.nextInt();
+ * System.out.println(suma);
+ *
+         *
+         *
+         * 9
+                *
+         * MyScanner ms=new MyScanner("2 \t3 \n4\n");
+ * int suma=0;
+ * while(ms. hasNext()) suma+=ms.nextInt();
+ * System.out.println(suma);
+ *
+         *
+         *
+         * 9
+                *
+         * MyScanner ms=new MyScanner("2 3 4\n\t");
+ * int suma=0;
+ * while(ms. hasNext()) suma+=ms.nextInt();
+ * System.out.println(suma);
+ *
+         *
+         *
+         * 9
+                *
+         * MyScanner ms=new MyScanner("2 \nmi mama me mima");
+ * System.out.println(ms.nextInt());
+ * ms.nextLine();//limpiar enter
+ * System.out.println(ms.nextLine());
+    }
+
 }

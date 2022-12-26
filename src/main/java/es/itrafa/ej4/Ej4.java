@@ -40,7 +40,7 @@ package es.itrafa.ej4;
  * <p>
  * <p>
  * HCL, JHLZHY, TVYPABYP AL ZH
- *
+ * <p>
  * V -> C
  * t -> A
  * u -> B
@@ -50,18 +50,21 @@ public class Ej4 {
     public static void main(String[] args) {
         cesar("Alea iacta est", 3);
         cesar("Ave, Caesar, morituri te salutant", 7);
+        cesar("abcdefghijklmnopqrstuvwxyz", 7);
     }
 
     private static void cesar(String s, int desp) {
+        final int ABCLENGTH = 26;
         char[] line = s.toUpperCase().toCharArray();
         for (int i = 0; i < s.length(); i++) {
 
-            if (line[i] >= 'A' && line[i] <  'Z' - desp) {
-                    System.out.print((char) (line[i] + desp));
+            if (line[i] >= 'A' && line[i] <= 'Z' - desp) {
+                System.out.print((char) (line[i] + desp));
 
-            }else if(line[i] >= 'Z' - desp && line[i] <= 'Z'){
-                System.out.print((char) ('A'));
-            }else {
+            } else if (line[i] > 'Z' - desp && line[i] <= 'Z') {
+                System.out.print((char) (line[i] - ABCLENGTH + desp));
+
+            } else {
                 System.out.print(line[i]);
             }
         }
