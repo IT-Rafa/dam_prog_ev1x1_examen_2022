@@ -260,11 +260,10 @@ package es.itrafa.ej5;
  */
 class Ej5 {
     public static void main(String[] args) {
-        /*
+
         MyScanner ms = new MyScanner("hola a todas");
         System.out.println(ms.getPos());
         System.out.println(ms.getDatos());
-
         // 0
         // hola a todas
 
@@ -273,7 +272,6 @@ class Ej5 {
         MyScanner ms1 = new MyScanner("hola a todas\n y hola a todos");
         System.out.println(ms1.getPos());
         System.out.println(ms1.getDatos());
-
         // 0
         // hola a todas
         //  y hola a todos
@@ -283,7 +281,6 @@ class Ej5 {
         MyScanner ms2 = new MyScanner("");//String vacio
         System.out.println(ms2.getPos());
         System.out.println(ms2.hasNextLine());
-
         // 0
         // false
 
@@ -293,7 +290,6 @@ class Ej5 {
         ms3.nextLine();
         System.out.println(ms3.getPos());
         System.out.println(ms3.getDatos());
-
         // 13
         // hola a todos
         // y adios
@@ -307,7 +303,6 @@ class Ej5 {
         System.out.println(ms4.hasNextLine());
 
         // hola a todas
-
         //  y hola a todos
         // 28
         // false
@@ -317,7 +312,6 @@ class Ej5 {
         MyScanner ms5 = new MyScanner("hola a todas\n y hola a todos");
         System.out.println(ms5.getPos());
         System.out.println(ms5.hasNextLine());
-
         // 0
         // true
 
@@ -327,7 +321,6 @@ class Ej5 {
         System.out.println(ms6.nextLine());
         System.out.println(ms6.nextLine());
         System.out.println(ms6.hasNextLine());
-
         // hola a todas
         //  y hola a todos
         // false
@@ -338,7 +331,6 @@ class Ej5 {
         System.out.println(ms7.nextLine());
         System.out.println(ms7.getPos());
         System.out.println(ms7.getDatos());
-
         // hola a todas
         // 13
         // hola a todas
@@ -350,7 +342,6 @@ class Ej5 {
         while (ms8.hasNextLine()) {
             System.out.println(ms8.nextLine());
         }
-
         // hola a todos
 
         System.out.println();
@@ -359,7 +350,6 @@ class Ej5 {
         while (ms9.hasNextLine()) {
             System.out.println(ms9.nextLine());
         }
-
         // hola a todas
         // y también hola a todos
 
@@ -369,7 +359,6 @@ class Ej5 {
         while (ms10.hasNextLine()) {
             System.out.println(ms10.nextLine());
         }
-
         // hola a todas
         // y también hola a todos
 
@@ -379,9 +368,8 @@ class Ej5 {
         while (ms11.hasNextLine()) {
             System.out.println(ms11.nextLine());
         }
-
         // hola a todas
-
+        //
         // y también hola a todos
 
         System.out.println();
@@ -389,7 +377,6 @@ class Ej5 {
         MyScanner ms12 = new MyScanner("hola a todos");
         System.out.println(ms12.getPos());
         System.out.println(ms12.getDatos());
-
         // 0
         // hola a todos
 
@@ -400,7 +387,6 @@ class Ej5 {
         System.out.println(ms12a.next());
         System.out.println(ms12a.next());
         System.out.println(ms12a.getPos());
-
         // 0
         // hola
         // a
@@ -412,16 +398,14 @@ class Ej5 {
         int suma13 = 0;
         while (ms13.hasNext()) suma13 += ms13.nextInt();
         System.out.println(suma13);
-
         // 9
 
         System.out.println();
-*/
+
         MyScanner ms14 = new MyScanner("2 \t3 \n4\n");
         int suma14 = 0;
         while (ms14.hasNext()) suma14 += ms14.nextInt();
         System.out.println(suma14);
-
         // 9
 
         System.out.println();
@@ -430,7 +414,6 @@ class Ej5 {
         int suma15 = 0;
         while (ms15.hasNext()) suma15 += ms15.nextInt();
         System.out.println(suma15);
-
         // 9
 
         System.out.println();

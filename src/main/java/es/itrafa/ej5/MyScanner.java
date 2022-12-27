@@ -1,4 +1,5 @@
 package es.itrafa.ej5;
+
 // FALLA HASNEXT
 public class MyScanner {
 
@@ -53,14 +54,8 @@ public class MyScanner {
      */
     public boolean hasNext() {
         for (int i = this.pos; i < this.datos.length(); i++) {
-            if (this.datos.charAt(i) == '\n' || this.datos.charAt(i) == ' ' || this.datos.charAt(i) == '\t') {
+            if (this.datos.charAt(i) != ' ' && this.datos.charAt(i) != '\t' && this.datos.charAt(i) != '\n') {
                 // Comprobar que lo que queda no son solo símbolos
-                for(int j = i; j < this.datos.length(); j++){
-                    if (this.datos.charAt(i) != '\n' && this.datos.charAt(i) != ' ' && this.datos.charAt(i) != '\t'){
-                        return true;
-                    }
-                }
-            }else{
                 return true;
             }
         }
@@ -92,7 +87,7 @@ public class MyScanner {
      * parte del token.
      */
     public String next() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = this.pos; i < this.datos.length(); i++, this.pos++) {
             if (this.datos.charAt(i) != ' ' && this.datos.charAt(i) != '\t' && this.datos.charAt(i) != '\n') {
                 break;
@@ -100,13 +95,13 @@ public class MyScanner {
         }
         for (int i = this.pos; i < this.datos.length(); i++, this.pos++) {
             if (this.datos.charAt(i) != ' ' && this.datos.charAt(i) != '\t' && this.datos.charAt(i) != '\n') {
-                result += this.datos.charAt(i);
+                result.append(this.datos.charAt(i));
             } else {
                 break;
             }
 
         }
-        return result;
+        return result.toString();
     }
 
     /**
