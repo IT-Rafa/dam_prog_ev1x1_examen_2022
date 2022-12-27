@@ -10,7 +10,7 @@ public class MyScanner {
     // CREATORS
     public MyScanner(String st) {
         this.datos = st;
-        this.pos = st.length();
+        this.pos = 0;
     }
 
     // GETTER && SETTER
@@ -68,9 +68,11 @@ public class MyScanner {
      */
     public String nextLine() {
         String result = "";
-        for(int i = this.pos; i < this.datos.length(); i++, this.pos++){
-            if(this.datos.charAt(i) != '\n'){
-                result += this.datos.charAt(i);
+        for(int i = this.pos; i < this.datos.length(); i++){
+            result += this.datos.charAt(i);
+            this.pos++;
+            if(this.datos.charAt(i) == '\n'){
+                break;
             }
 
         }
@@ -97,6 +99,8 @@ public class MyScanner {
      * Devuelve un int que se corresponde con el token leído
      */
     public int nextInt() {
+        String st = this.next();
+        System.out.println(st);
         return -10;
     }
 }
