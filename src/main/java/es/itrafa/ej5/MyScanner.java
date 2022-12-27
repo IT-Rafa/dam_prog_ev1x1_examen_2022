@@ -1,11 +1,10 @@
 package es.itrafa.ej5;
-
+// FALLA HASNEXT
 public class MyScanner {
 
     // ATTRIBUTES
     private int pos;
     private String datos;
-    private char separador = ' ';
 
     // CREATORS
     public MyScanner(String st) {
@@ -39,8 +38,8 @@ public class MyScanner {
      * String que se considera una línea, aunque sea el string vacío.
      */
     public boolean hasNextLine() {
-        for(int i = this.pos; i < this.datos.length(); i++){
-            if (this.datos.charAt(i) == '\n'){
+        for (int i = this.pos; i < this.datos.length(); i++) {
+            if (this.datos.charAt(i) == '\n' || i == this.datos.length() - 1) {
                 return true;
             }
         }
@@ -53,8 +52,15 @@ public class MyScanner {
      * devuelve false
      */
     public boolean hasNext() {
-        for(int i = this.pos; i < this.datos.length(); i++){
-            if (this.datos.charAt(i) == '\n' || this.datos.charAt(i) == this.separador){
+        for (int i = this.pos; i < this.datos.length(); i++) {
+            if (this.datos.charAt(i) == '\n' || this.datos.charAt(i) == ' ' || this.datos.charAt(i) == '\t') {
+                // Comprobar que lo que queda no son solo símbolos
+                for(int j = i; j < this.datos.length(); j++){
+                    if (this.datos.charAt(i) != '\n' && this.datos.charAt(i) != ' ' && this.datos.charAt(i) != '\t'){
+                        return true;
+                    }
+                }
+            }else{
                 return true;
             }
         }
@@ -67,16 +73,17 @@ public class MyScanner {
      * inmediatamente un \n
      */
     public String nextLine() {
-        String result = "";
-        for(int i = this.pos; i < this.datos.length(); i++){
-            result += this.datos.charAt(i);
+        StringBuilder result = new StringBuilder();
+        for (int i = this.pos; i < this.datos.length(); i++) {
             this.pos++;
-            if(this.datos.charAt(i) == '\n'){
+            if (this.datos.charAt(i) == '\n') {
                 break;
+            } else {
+                result.append(this.datos.charAt(i));
             }
 
         }
-        return result;
+        return result.toString();
     }
 
     /**
@@ -86,9 +93,16 @@ public class MyScanner {
      */
     public String next() {
         String result = "";
-        for(int i = this.pos; i < this.datos.length(); i++, this.pos++){
-            if(this.datos.charAt(i) != this.separador){
+        for (int i = this.pos; i < this.datos.length(); i++, this.pos++) {
+            if (this.datos.charAt(i) != ' ' && this.datos.charAt(i) != '\t' && this.datos.charAt(i) != '\n') {
+                break;
+            }
+        }
+        for (int i = this.pos; i < this.datos.length(); i++, this.pos++) {
+            if (this.datos.charAt(i) != ' ' && this.datos.charAt(i) != '\t' && this.datos.charAt(i) != '\n') {
                 result += this.datos.charAt(i);
+            } else {
+                break;
             }
 
         }
@@ -99,8 +113,6 @@ public class MyScanner {
      * Devuelve un int que se corresponde con el token leído
      */
     public int nextInt() {
-        String st = this.next();
-        System.out.println(st);
-        return -10;
+        return Integer.parseInt(this.next());
     }
 }

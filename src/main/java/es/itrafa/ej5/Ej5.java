@@ -8,9 +8,9 @@ package es.itrafa.ej5;
  * <p>
  * Nuestros objetos MyScanner sólo trabajan con los Strings introducidos en el constructor.
  * No trabaja con teclado, ni ficheros.  Los caracteres delimitadores que utiliza para
- * hacer su trabajo son los mismos que usa por defecto la clase Scanner: \n \t y ' ' . 
+ * hacer su trabajo son los mismos que usa por defecto la clase Scanner: \n \t y ' '.
  * <p>
- *  
+ *
  * <p>
  * La clase MyScanner consta de dos atributos
  * class MyScanner {
@@ -20,34 +20,36 @@ package es.itrafa.ej5;
  * }
  * La solución debe basarse en el recorrido y tratamiento del String datos, por descontado,
  * no se permite utilizar la clase Scanner en el interior de MyScanner para solucionar el
- * problema. . MyScanner es un escaner que avanza en su análisis de caracter en caracter
+ * problema. . MyScanner es un escáner que avanza en su análisis de carácter en carácter
  * de forma que en el atributo datos se almacena el String sobre el que se produce el
- * escaneo y en pos se almacena la posición del siguiente caracter a procesar. 
- *  
+ * escaneo y en pos se almacena la posición del siguiente carácter a procesar.
+ * <p>
  * MyScanner consta  de los siguientes métodos:
  * <p>
  * getPos().
  * Devuelve el entero almacenado por el atributo pos.
  * getDatos().
  * Devuelve el String almacenado en Datos que es justamente el String que se indica
- * al constructor. Este es un valor constante a lo largo de la vida del objeto. 
+ * al constructor. Este es un valor constante a lo largo de la vida del objeto.
  * hasNextLine().
  * Devuelve true si quedan más caracteres por escanear que constituyan una línea .
- * En caso contrario devuelve false. Si entre la posición actual del escaneo y el
- * final del String hay al menos un  caracter siempre se va a poder devolver un
- * String que se considera una línea, aunque sea el string vacío. 
+ * En caso contrario devuelve, false. Si entre la posición actual del escaneo y el
+ * final del String hay al menos un  carácter siempre se va a poder devolver un
+ * String que se considera una línea, aunque sea el string vacío.
  * hasNext().
- * Devuelve true si  queda algun token en los datos por analizar, es decir, si
- * hay algun caracter no delimitador entre pos y datos.length(). En caso contrario
+ * Devuelve true si  queda algún token en los datos por analizar, es decir, si
+ * hay algún carácter no delimitador entre pos y datos.length(). En caso contrario
  * devuelve false
  * nextLine().
  * Devuelve un String que se corresponde con  la línea leida. Recuerda la
  * posibilidad de que nextLine() devuelva el string vacío "" cuando se encuentra
  * inmediatamente un \n.
+ * <p>
  * next().
- * Devuelve un String que se corresponde con el  token leído. Token es un conjunto
+ * Devuelve un String que se corresponde con el token leído. Token es un conjunto
  * caracteres contiguos delimitador por un carácter delimitador que no se considera
  * parte del token.
+ * <p>
  * nextInt().
  * Devuelve un int que se corresponde con el  token leído.
  * <p>
@@ -67,7 +69,6 @@ package es.itrafa.ej5;
  * String next(){
  * <p>
  * return "nolohice";//cualquier String
- * <p>
  * }
  * <p>
  * Ten en cuenta, que el funcionamiento de next(), nextInt() y nextLine() es similar al de la
@@ -257,45 +258,46 @@ package es.itrafa.ej5;
  * ms.nextLine();//limpiar enter
  * System.out.println(ms.nextLine());
  */
-public class Ej5 {
+class Ej5 {
     public static void main(String[] args) {
+        /*
         MyScanner ms = new MyScanner("hola a todas");
         System.out.println(ms.getPos());
         System.out.println(ms.getDatos());
-         /*
-                0
-                hola a todas
-          */
+
+        // 0
+        // hola a todas
+
         System.out.println();
 
         MyScanner ms1 = new MyScanner("hola a todas\n y hola a todos");
         System.out.println(ms1.getPos());
         System.out.println(ms1.getDatos());
-        /*
-                 0
-                 hola a todas
-                  y hola a todos
-         */
+
+        // 0
+        // hola a todas
+        //  y hola a todos
+
         System.out.println();
 
         MyScanner ms2 = new MyScanner("");//String vacio
         System.out.println(ms2.getPos());
         System.out.println(ms2.hasNextLine());
-        /*
-            0
-            false
-        */
+
+        // 0
+        // false
+
         System.out.println();
 
         MyScanner ms3 = new MyScanner("hola a todos\ny adios");
         ms3.nextLine();
         System.out.println(ms3.getPos());
         System.out.println(ms3.getDatos());
-        /*
-             13
-             hola a todos
-             y adios
-         */
+
+        // 13
+        // hola a todos
+        // y adios
+
         System.out.println();
 
         MyScanner ms4 = new MyScanner("hola a todas\n y hola a todos");
@@ -303,95 +305,94 @@ public class Ej5 {
         System.out.println(ms4.nextLine());
         System.out.println(ms4.getPos());
         System.out.println(ms4.hasNextLine());
-        /*
-             hola a todas
 
-              y hola a todos
-             28
-             false
-        */
+        // hola a todas
+
+        //  y hola a todos
+        // 28
+        // false
+
         System.out.println();
 
         MyScanner ms5 = new MyScanner("hola a todas\n y hola a todos");
         System.out.println(ms5.getPos());
         System.out.println(ms5.hasNextLine());
-         /*
-             0
-             true
-        */
+
+        // 0
+        // true
+
         System.out.println();
 
         MyScanner ms6 = new MyScanner("hola a todas\n y hola a todos");
         System.out.println(ms6.nextLine());
         System.out.println(ms6.nextLine());
         System.out.println(ms6.hasNextLine());
-        /*
-             hola a todas
 
-              y hola a todos
-             false
-        */
+        // hola a todas
+        //  y hola a todos
+        // false
+
         System.out.println();
 
         MyScanner ms7 = new MyScanner("hola a todas\n y hola a todos");
         System.out.println(ms7.nextLine());
         System.out.println(ms7.getPos());
         System.out.println(ms7.getDatos());
-        /*
-             hola a todas
-             13
-             hola a todas
-             y hola a todos
-         */
+
+        // hola a todas
+        // 13
+        // hola a todas
+        // y hola a todos
+
         System.out.println();
 
         MyScanner ms8 = new MyScanner("hola a todos");
         while (ms8.hasNextLine()) {
             System.out.println(ms8.nextLine());
         }
-        /*
-            hola a todos
-        */
+
+        // hola a todos
+
         System.out.println();
 
         MyScanner ms9 = new MyScanner("hola a todas \ny también hola a todos");
         while (ms9.hasNextLine()) {
             System.out.println(ms9.nextLine());
         }
-        /*
-             hola a todas
-             y también hola a todos
-        */
+
+        // hola a todas
+        // y también hola a todos
+
         System.out.println();
 
         MyScanner ms10 = new MyScanner("hola a todas \ny también hola a todos\n");
         while (ms10.hasNextLine()) {
             System.out.println(ms10.nextLine());
         }
-         /*
-             hola a todas
-             y también hola a todos
-         */
+
+        // hola a todas
+        // y también hola a todos
+
         System.out.println();
 
         MyScanner ms11 = new MyScanner("hola a todas \n\ny también hola a todos\n");
         while (ms11.hasNextLine()) {
             System.out.println(ms11.nextLine());
         }
-        /*
-            hola a todas
 
-            y también hola a todos
-        */
+        // hola a todas
+
+        // y también hola a todos
+
         System.out.println();
 
         MyScanner ms12 = new MyScanner("hola a todos");
         System.out.println(ms12.getPos());
         System.out.println(ms12.getDatos());
-        /*
-            0
-            hola a todos
-         */
+
+        // 0
+        // hola a todos
+
         System.out.println();
 
         MyScanner ms12a = new MyScanner("hola a todos");
@@ -399,45 +400,47 @@ public class Ej5 {
         System.out.println(ms12a.next());
         System.out.println(ms12a.next());
         System.out.println(ms12a.getPos());
-        /*
-             0
-             hola
-             a
-             6
-         */
+
+        // 0
+        // hola
+        // a
+        // 6
+
         System.out.println();
 
         MyScanner ms13 = new MyScanner("2 3 4");
         int suma13 = 0;
         while (ms13.hasNext()) suma13 += ms13.nextInt();
         System.out.println(suma13);
-        /*
-            9
-         */
-        System.out.println();
 
+        // 9
+
+        System.out.println();
+*/
         MyScanner ms14 = new MyScanner("2 \t3 \n4\n");
         int suma14 = 0;
-        while (ms14.hasNext()) suma14 += ms.nextInt();
+        while (ms14.hasNext()) suma14 += ms14.nextInt();
         System.out.println(suma14);
-        /*
-         * 9
-         */
+
+        // 9
+
         System.out.println();
 
         MyScanner ms15 = new MyScanner("2 3 4\n\t");
         int suma15 = 0;
         while (ms15.hasNext()) suma15 += ms15.nextInt();
         System.out.println(suma15);
-        /*
-            9
-        */
+
+        // 9
+
         System.out.println();
 
         MyScanner ms16 = new MyScanner("2 \nmi mama me mima");
         System.out.println(ms16.nextInt());
         ms16.nextLine();//limpiar enter
         System.out.println(ms16.nextLine());
+        // 2
+        // mi mama me mima
     }
 
 }
