@@ -57,34 +57,44 @@ public class Ej4 {
         System.out.println(cesar("VW VCODKGP, DTWVQ?", -2));
         // TU TAMBIEN, BRUTO?
 
-        System.out.println(cesar("a",-1));
+        System.out.println(cesar("a", -1));
         // Z
 
-        System.out.println(cesar("a",-26));
+        System.out.println(cesar("a", -26));
         // A
 
         System.out.println(cesar("abcdefghijklmnopqrstuvwxyz", 7));
         // HIJKLMNOPQRSTUVWXYZABCDEFG
 
-        System.out.println(cesar("abcdefghijklmnopqrstuvwxyz",-1));
+        System.out.println(cesar("abcdefghijklmnopqrstuvwxyz", -1));
         // ZABCDEFGHIJKLMNOPQRSTUVWXY
     }
 
     private static String cesar(String s, int desp) {
-        final int ABCLENGTH = 26;
+        final int TODASLETRAS = 26;
         StringBuilder result = new StringBuilder();
 
-        char[] line = s.toUpperCase().toCharArray();
-        for (int i = 0; i < s.length(); i++) {
+        char[] input = s.toUpperCase().toCharArray();
+        for (int i = 0; i < input.length; i++) {
+            // carácteres no letras
+            if (input[i] < 'A' || input[i] > 'Z') {
+                result.append(input[i]);
 
-            if (line[i] >= 'A' && line[i] <= 'Z' - desp) {
-                result.append((char) (line[i] + desp));
+            } else { // letras
+                // códificamos letra
+                char newChar = (char) (input[i] + desp);
 
-            } else if (line[i] > 'Z' - desp && line[i] <= 'Z') {
-                result.append((char) (line[i] - ABCLENGTH + desp));
-            } else {
-                result.append(line[i]);
+                // letras codificadas ok
+                if (newChar >= 'A' && newChar <= 'Z') {
+                    result.append(newChar);
+
+                } else if (desp >= 0) { //
+                    result.append((char)(newChar - TODASLETRAS));
+                }else{
+                    result.append((char)(newChar + TODASLETRAS));
+                }
             }
+
         }
         return String.valueOf(result);
     }

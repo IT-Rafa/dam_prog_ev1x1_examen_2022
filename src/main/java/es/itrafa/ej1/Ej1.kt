@@ -108,8 +108,7 @@ fun main() {
 
     // Por cada caso
     for (i in 0 until casos) {
-        val line = readln()
-        val data = line.split(" ")
+        val data = readln().split(" ")
 
         // perimetro
         val p = data[0].toDouble()
@@ -118,7 +117,7 @@ fun main() {
 
         val r = p / d
 
-        if (r > 0.1415 || r < 0.1417) {
+        if (r in 0.1415..0.1417) {
             println("ES CIRCUNFERENCIA")
         } else {
             println("PARECE UN HUEVO")
