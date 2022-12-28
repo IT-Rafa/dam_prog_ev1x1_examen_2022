@@ -48,26 +48,44 @@ package es.itrafa.ej4;
  */
 public class Ej4 {
     public static void main(String[] args) {
-        cesar("Alea iacta est", 3);
-        cesar("Ave, Caesar, morituri te salutant", 7);
-        cesar("abcdefghijklmnopqrstuvwxyz", 7);
+        System.out.println(cesar("Alea iacta est", 3));
+        // DOHD LDFWD HVW
+
+        System.out.println(cesar("Ave, Caesar, morituri te salutant", 7));
+        // HCL, JHLZHY, TVYPABYP AL ZHSBAHUA
+
+        System.out.println(cesar("VW VCODKGP, DTWVQ?", -2));
+        // TU TAMBIEN, BRUTO?
+
+        System.out.println(cesar("a",-1));
+        // Z
+
+        System.out.println(cesar("a",-26));
+        // A
+
+        System.out.println(cesar("abcdefghijklmnopqrstuvwxyz", 7));
+        // HIJKLMNOPQRSTUVWXYZABCDEFG
+
+        System.out.println(cesar("abcdefghijklmnopqrstuvwxyz",-1));
+        // ZABCDEFGHIJKLMNOPQRSTUVWXY
     }
 
-    private static void cesar(String s, int desp) {
+    private static String cesar(String s, int desp) {
         final int ABCLENGTH = 26;
+        StringBuilder result = new StringBuilder();
+
         char[] line = s.toUpperCase().toCharArray();
         for (int i = 0; i < s.length(); i++) {
 
             if (line[i] >= 'A' && line[i] <= 'Z' - desp) {
-                System.out.print((char) (line[i] + desp));
+                result.append((char) (line[i] + desp));
 
             } else if (line[i] > 'Z' - desp && line[i] <= 'Z') {
-                System.out.print((char) (line[i] - ABCLENGTH + desp));
-
+                result.append((char) (line[i] - ABCLENGTH + desp));
             } else {
-                System.out.print(line[i]);
+                result.append(line[i]);
             }
         }
-        System.out.println();
+        return String.valueOf(result);
     }
 }

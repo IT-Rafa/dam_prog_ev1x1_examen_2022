@@ -1,0 +1,6 @@
+Falta
+    - Ej1 Kotlin Tres veces el diámetro y un poquito más ¡En kotlin!
+        - Pendiente confirmar en consola
+        - Fallo resultado
+    - Ej4 Veni, vidi, vici (cesar)
+        - Falla desp < 0
